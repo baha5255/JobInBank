@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/JobInBank/',
   server: {
     allowedHosts: ['18af-162-120-21-66.ngrok-free.app']
   },

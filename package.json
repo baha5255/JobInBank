@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "homepage": "https://baha5255.github.io/JobInBank",
+  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
