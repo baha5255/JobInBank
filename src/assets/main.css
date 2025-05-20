@@ -1,0 +1,124 @@
+/* Убедитесь, что html и body занимают 100% высоты */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Скрывает горизонтальный скролл */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер, который будет растягиваться на всю высоту */
+#app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+
+/* Стили футера */
+footer {
+  background-color: #2d2d2d;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 0;
+  margin-top: auto; /* Это поможет футеру "прилипнуть" к низу */
+}
+
+.footer-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.footer-container h3, .footer-container h4 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.contact-container, .navigation-container, .social-container, .legal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+}
+
+.social-links li {
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #00aaff;
+}
+
+.social-links i {
+  margin-right: 10px;
+}
+
+.legal-container {
+  grid-column: span 4;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.legal-container p {
+  margin: 5px 0;
+}
+
+.legal-container a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.legal-container a:hover {
+  color: #00aaff;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .legal-container {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
