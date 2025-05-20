@@ -13,6 +13,8 @@ export default defineConfig([
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
+  
+
   {
     languageOptions: {
       globals: {
