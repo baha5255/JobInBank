@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="title">{{ $t('home.title') }}</h1>
+    <h1 class="title">Банки Таджикистана</h1>
     <div class="banks-grid">
       <BankCard v-for="bank in banks" :key="bank.id" :bank="bank" />
     </div>
