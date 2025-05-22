@@ -17,15 +17,22 @@ export default {
   name: 'PositionDetailView',
   data() {
     const { departmentId, unitId } = this.$route.params;
+
     const bank = banks.find(b =>
       b.departments.some(d => d.id === parseInt(departmentId))
     );
+
     const department = bank.departments.find(d => d.id === parseInt(departmentId));
     const unit = department.units.find(u => u.id === parseInt(unitId));
+
+    console.log('department:', department);
+    console.log('unit:', unit);
+
     return { unit };
   },
 };
 </script>
+
 <style scoped>
 h1 {
   font-size: 2rem;

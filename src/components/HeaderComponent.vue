@@ -5,11 +5,14 @@
         <img src="/public/logoJobInBank.png" class="min-h-[70px] min-w-[70px]" alt="JobInBank Logo" />
         <span>JobInBank</span>
       </div>
+
+      <div class="menu-toggle" @click="toggleMenu">☰</div>
+
       <nav :class="{ 'nav-open': isMenuOpen }">
         <ul>
-          <li><router-link to="/">{{ $t('headers.headerTitleHome') }}</router-link></li>
-          <li><router-link to="/about">{{ $t('headers.headerTitleAbout') }}</router-link></li>
-          <li><router-link to="/contacts">{{ $t('headers.headerTitleContacts') }}</router-link></li>
+          <li><router-link @click="closeMenu" to="/">{{ $t('headers.headerTitleHome') }}</router-link></li>
+          <li><router-link @click="closeMenu" to="/about">{{ $t('headers.headerTitleAbout') }}</router-link></li>
+          <li><router-link @click="closeMenu" to="/contacts">{{ $t('headers.headerTitleContacts') }}</router-link></li>
         </ul>
         <div class="lang-select-wrapper">
           <select v-model="$i18n.locale" class="language-switcher">
@@ -18,12 +21,11 @@
             <option value="tj">Тоҷикӣ</option>
           </select>
         </div>
-
       </nav>
-      <div class="menu-toggle" @click="toggleMenu">☰</div>
     </div>
   </header>
 </template>
+
 
 <script>
 export default {
@@ -31,16 +33,19 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      lang: 'ru',
     };
   },
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
+    closeMenu() {
+      this.isMenuOpen = false;
+    },
   },
 };
 </script>
+
 
 
 <style scoped>
@@ -60,6 +65,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -104,15 +110,14 @@ nav ul li a:hover {
   color: #00bcd4;
 }
 
-
-
 .menu-toggle {
   display: none;
   font-size: 26px;
   cursor: pointer;
+  color: white;
 }
 
-
+/* Язык */
 .language-switcher {
   padding: 6px 12px;
   font-size: 14px;
@@ -135,8 +140,7 @@ nav ul li a:hover {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3);
 }
 
-
-
+/* Dark mode для select */
 @media (prefers-color-scheme: dark) {
   .language-switcher {
     background-color: #1f2937;
@@ -147,6 +151,41 @@ nav ul li a:hover {
   .language-switcher:hover {
     background-color: #374151;
     border-color: #60a5fa;
+  }
+}
+
+/* ---------- Адаптивность ---------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.nav-open {
+    max-height: 300px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .lang-select-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
   }
 }
 </style>
